@@ -1,0 +1,24 @@
+{% extends "tasks/base.html" %}
+
+{% block body %}
+  <h1>to-do: Lista de tareas</h1>
+  <p>Check out our great task below</p>
+  <p>Total task: <strong>{{ num_tasks }}</strong> task{{num_tasks|pluralize}}</p>
+  {% comment %} <a class="button" href="{% url 'tasks:add-task'%}">Nueva tarea</a> {% endcomment %}
+  {% for task in tasks%}
+    <h2>{{task.title}}</h2>
+    <div class="task-date">{{task.created_at}}</div>
+    <p>{{task.content|truncatewords:20}}</p>
+    {% if task.done %}
+      <div class= "task-done">Tarea completada: ✅</div>
+    {% else %}
+      <div class= "task-done">Tarea completada: ❌</div>
+    {% endif %}
+    <br>
+    <a class="button" href="{% url 'tasks:task_detail' task.slug %}">Ver tarea</a>
+    <br><br>
+    <hr>
+    
+  {% endfor %}
+
+{% endblock body %}
