@@ -14,14 +14,14 @@ def task_detail(request, slug):
     return render(request, 'todo/tasks/detail.html', dict(task=task))
 
 
-# def add_task(request):
-#     if request.method == 'POST':
-#         if (form := AddTaskForm(request.POST)).is_valid():
-#             post = form.save(commit=False)
-#             post.slug = slugify(post.title)
-#             post.save()
-#             return redirect('tasks:home')
-#     else:
-#         form = AddTaskForm()
+def add_task(request):
+    if request.method == 'POST':
+        if (form := AddTaskForm(request.POST)).is_valid():
+            post = form.save(commit=False)
+            post.slug = slugify(post.title)
+            post.save()
+            return redirect('tasks:home')
+    else:
+        form = AddTaskForm()
 
-#     return render(request, 'tasks/add_task.html', dict(form=form))
+    return render(request, 'tasks/add_task.html', dict(form=form))
