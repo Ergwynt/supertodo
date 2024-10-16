@@ -1,6 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
+from django.utils.text import slugify
 
 from tasks.models import Task
+
+from .forms import AddTaskForm
 
 
 def task_list(request):
@@ -20,7 +23,7 @@ def add_task(request):
             post = form.save(commit=False)
             post.slug = slugify(post.title)
             post.save()
-            return redirect('tasks:home')
+            return redirect('tasks:task-list')
     else:
         form = AddTaskForm()
 

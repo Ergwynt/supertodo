@@ -1,0 +1,11 @@
+{% extends "tasks/base.html" %}
+{% block body %}
+<a class="retornar" href="{% url 'tasks:task-list'%}">volver a tareas</a>
+<form method="post" class="formtask">
+
+  {% csrf_token %}
+  {{form}}
+  <input class="enviar" type="submit" value="Añadir tarea">
+
+</form>
+{% endblock body %}
