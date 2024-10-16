@@ -30,5 +30,17 @@ def add_task(request):
     return render(request, 'tasks/add_task.html', dict(form=form))
 
 
-def toggle(request, slug, done):
+def task_pending(request):
+    pass
+
+
+def task_toggle(request, slug, done):
+    pass
+
+
+def task_delete(request):
+    pass
+
+
+def task_edit(request):
     pass
