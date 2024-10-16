@@ -4,7 +4,7 @@
   <h1> {{task.name}}</h1>
   <div class="task-date">{{task.created_at}}</div>
   <p>{{task.description}}</p>
-  {% if task.task_made %}
+  {% if task.done %}
       <div class= "task-done">Tarea completada: ✅</div>
   {% else %}
       <div class= "task-done">Tarea completada: ❌</div>
