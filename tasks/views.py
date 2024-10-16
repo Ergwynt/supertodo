@@ -14,7 +14,7 @@ def task_list(request):
 
 def task_detail(request, slug):
     task = Task.objects.get(slug=slug)
-    return render(request, 'todo/tasks/detail.html', dict(task=task))
+    return render(request, 'tasks/task/detail.html', dict(task=task))
 
 
 def add_task(request):
@@ -28,3 +28,7 @@ def add_task(request):
         form = AddTaskForm()
 
     return render(request, 'tasks/add_task.html', dict(form=form))
+
+
+def toggle(request, slug, done):
+    pass

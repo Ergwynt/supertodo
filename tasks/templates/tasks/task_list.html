@@ -6,7 +6,7 @@
   <p>Total task: <strong>{{ num_tasks }}</strong> task{{num_tasks|pluralize}}</p>
   <a class="button" href="{% url 'tasks:add-task'%}">Nueva tarea</a>
   {% for task in tasks%}
-    <h2>{{task.title}}</h2>
+    <h2>{{task.name}}</h2>
     <div class="task-date">{{task.created_at}}</div>
     <p>{{task.content|truncatewords:20}}</p>
     {% if task.done %}

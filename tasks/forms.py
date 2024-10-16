@@ -6,4 +6,4 @@ from .models import Task
 class AddTaskForm(forms.ModelForm):
     class Meta:
         model = Task
-        fields = ('name', 'description', 'done')
+        fields = ('name', 'description', 'done', 'complete_before')
