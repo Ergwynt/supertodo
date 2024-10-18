@@ -16,7 +16,7 @@
     {% endif %}
     <br>
       <a class="button" href="{% url 'tasks:task_detail' task.slug %}">Ver tarea</a>
-      <a class="button" href="{% url 'tasks:task_toggle' task.slug %}">Cambiar estado de la tarea</a>
+      {% comment %} <a class="button" href="{% url 'tasks:task_toggle' task.slug %}">Cambiar estado de la tarea</a> {% endcomment %}
     <br><br>
     <hr>
     

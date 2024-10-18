@@ -34,7 +34,7 @@ def task_pending(request):
     pass
 
 
-def task_toggle(request, slug, done):
+def task_toggle(request):
     pass
 
 
