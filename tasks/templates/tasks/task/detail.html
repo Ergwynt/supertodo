@@ -9,7 +9,7 @@
   {% else %}
       <div class= "task-done">Tarea completada: ❌</div>
   {% endif %}
-
+  <a class ="button" href="{%url 'tasks:task-toggle' task.slug%}">Cambiar estado de la tarea</a>
 
   <p><a class="button" href="{% url 'tasks:task-list' %}">Return to home</a></p>
 {% endblock body %}

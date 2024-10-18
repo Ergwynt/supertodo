@@ -34,8 +34,19 @@ def task_pending(request):
     pass
 
 
-def task_toggle(request):
-    pass
+def task_done(request, slug):
+    task = Task.objects.get(slug=slug)
+    return render(request, 'tasks/task/task_stage.html', dict(task=task))
+
+
+def task_toggle(request, slug):
+    task = Task.objects.get(slug=slug)
+    if task.done:
+        task.done = False
+    else:
+        task.done = True
+    task.save()
+    return redirect('tasks:task-list')
 
 
 def task_delete(request):

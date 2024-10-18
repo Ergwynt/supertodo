@@ -5,6 +5,8 @@
   <p>Check out our great task below</p>
   <p>Total task: <strong>{{ num_tasks }}</strong> task{{num_tasks|pluralize}}</p>
   <a class="button" href="{% url 'tasks:add-task'%}">Nueva tarea</a>
+  <br>
+  <a class="button" href="{%url 'tasks:task-done'%}">Ver tareas hechas</a>
   {% for task in tasks%}
     <h2>{{task.name}}</h2>
     <div class="task-date">{{task.created_at}}</div>
@@ -16,6 +18,7 @@
     {% endif %}
     <br>
       <a class="button" href="{% url 'tasks:task_detail' task.slug %}">Ver tarea</a>
+      
       {% comment %} <a class="button" href="{% url 'tasks:task_toggle' task.slug %}">Cambiar estado de la tarea</a> {% endcomment %}
     <br><br>
     <hr>
