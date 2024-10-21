@@ -1,0 +1,25 @@
+{% extends "tasks/base.html"%}
+
+{% block body %}
+  {% for task in task_pending%}
+  <div class="card" style="width: 18rem;" >
+    <h2>{{task.name}}</h2>
+    <div class="task-date">{{task.created_at}}</div>
+    <p>{{task.content|truncatewords:20}}</p>
+    {% if task.done %}
+      <div class= "task-done">Tarea completada: ✅</div>
+    {% else %}
+      <div class= "task-done">Tarea completada: ❌</div>
+    {% endif %}
+    <br>
+      <a class="btn btn-info" role="button" href="{% url 'tasks:task_detail' task.slug %}">Ver tarea</a>
+    <br><br>
+    <hr>
+  </div>
+  {% endfor %}
+  
+  
+  
+
+  <p><a class="button" href="{% url 'tasks:task-list' %}">Volver a inicio</a></p>
+{% endblock body %}

@@ -2,10 +2,10 @@
 {% block body %}
 
 <div class="container my-5">
-  <a class="btn btn-secondary mb-4" href="{% url 'tasks:task-list' %}">← Volver a tareas</a>
+  <a class="btn btn-secondary mb-4" role="button" href="{% url 'tasks:task-list' %}">← Volver a tareas</a>
   
   <div class="card p-4">
-    <h2 class="card-title text-center">Añadir Nueva Tarea</h2>
+    <h2 class="card-title text-center">Editar Tarea</h2>
     <form method="post" class="formtask">
       {% csrf_token %}
       
@@ -14,7 +14,7 @@
       </div>
       
       <div class="d-flex justify-content-center">
-        <input type="submit" class="btn btn-primary mt-3" value="Añadir tarea">
+        <input type="submit" class="btn btn-primary mt-3" value="Guardar cambios">
       </div>
       
     </form>

@@ -1,27 +1,42 @@
 {% extends "tasks/base.html" %}
 
 {% block body %}
-  <h1>to-do: Lista de tareas</h1>
-  <p>Check out our great task below</p>
-  <p>Total task: <strong>{{ num_tasks }}</strong> task{{num_tasks|pluralize}}</p>
-  <a class="btn btn-info" role="button" href="{% url 'tasks:add-task'%}">Nueva tarea</a>
-  <br>
-  <a class="btn btn-info" role="button" href="{%url 'tasks:task-done'%}">Ver tareas hechas</a>
-  {% for task in tasks%}
-  <div class="card" style="width: 18rem;" >
-    <h2>{{task.name}}</h2>
-    <div class="task-date">{{task.created_at}}</div>
-    <p>{{task.content|truncatewords:20}}</p>
-    {% if task.done %}
-      <div class= "task-done">Tarea completada: ✅</div>
-    {% else %}
-      <div class= "task-done">Tarea completada: ❌</div>
-    {% endif %}
-    <br>
-      <a class="btn btn-info" role="button" href="{% url 'tasks:task_detail' task.slug %}">Ver tarea</a>
-    <br><br>
-    <hr>
+  
+  <div class="container-fluid text-center my-5">
+    <h1 class="bg-primary text-white py-3">To-Do: Lista de tareas</h1>
+    <p>Check out our great tasks below</p>
+    <p>Total tasks: <strong>{{ num_tasks }}</strong> task{{num_tasks|pluralize}}</p>
+    
+    <div class="d-flex justify-content-center my-3">
+      <a class="btn btn-success mx-2" href="{% url 'tasks:add-task' %}">Nueva tarea</a>
+      <a class="btn btn-info mx-2" href="{% url 'tasks:task-done' %}">Ver tareas hechas</a>
+      <a class="btn btn-warning mx-2" href="{% url 'tasks:task-pending' %}">Ver tareas pendientes</a>
+    </div>
   </div>
-  {% endfor %}
+  
+  <div class="container">
+    <div class="row justify-content-center">
+      {% for task in tasks %}
+        <div class="col-md-4 mb-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h2 class="card-title">{{ task.name }}</h2>
+              <p class="text-muted small">{{ task.created_at|date:"d M Y" }}</p>
+              <p class="card-text">{{ task.content|truncatewords:20 }}</p>
+              {% if task.done %}
+              <div class= "task-done">Tarea completada: ✅</div>
+              {% else %}
+              <div class= "task-done">Tarea completada: ❌</div>
+              {% endif %}
+            </div>
+            <div class="card-footer d-flex justify-content-around">
+              <a class="btn btn-outline-primary" href="{% url 'tasks:task-edit' task.slug %}">Editar</a>
+              <a class="btn btn-outline-info" href="{% url 'tasks:task_detail' task.slug %}">Ver</a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
 
 {% endblock body %}
